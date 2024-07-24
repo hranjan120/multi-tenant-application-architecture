@@ -1,0 +1,40 @@
+{
+  "name": "multi-tenant-application-architecture",
+  "version": "1.0.0",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "export NODE_ENV=prod&& node server.js",
+    "dev": "export NODE_ENV=dev&& node server.js",
+    "local": "export NODE_ENV=dev&& nodemon server.js",
+    "container": "export NODE_ENV=dev&& nodemon --watch . --legacy-watch server.js"
+  },
+  "author": {
+    "name": "Himanshu Ranjan",
+    "email": "hranjan120@gmail.com",
+    "url": "https://github.com/hranjan120"
+  },
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "ioredis": "^5.4.1",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.5.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.7.0",
+    "eslint": "^9.7.0",
+    "globals": "^15.8.0",
+    "nodemon": "^3.1.4"
+  },
+  "engines": {
+    "node": ">= 20.15.1",
+    "npm": ">= 10.7.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hranjan120/multi-tenant-application-architecture"
+  }
+}
