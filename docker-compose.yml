@@ -1,5 +1,3 @@
-version: '3.7'
-
 services:
   redis:
     image: redis:7.2.5
@@ -15,20 +13,20 @@ services:
       - ./redis-data/:/root/redis
       - ./redis-data/redis.conf:/usr/local/etc/redis/redis.conf
 
-    backend-app:
-      build:
-        dockerfile: Dockerfile
-        context: ./backend-app
-      container_name: backend-app
-      ports:
-        - "8002:8002"
-      restart: always
-      depends_on:
-        - "kafka-3"
-      command:
-        - '/bin/sh'
-        - '-c'
-        - '/bin/sleep 30 && npm run "container"'
-      volumes:
-        - ./backend-app/:/app/backend-app
-        - /app/backend-app/node_modules
+  backend-app:
+    build:
+      dockerfile: Dockerfile
+      context: ./backend-app
+    container_name: backend-app
+    ports:
+      - "8002:8002"
+    restart: always
+    depends_on:
+      - "redis"
+    command:
+      - '/bin/sh'
+      - '-c'
+      - '/bin/sleep 30 && npm run "container"'
+    volumes:
+      - ./backend-app/:/app/backend-app
+      - /app/backend-app/node_modules

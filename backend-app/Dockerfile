@@ -1,5 +1,5 @@
 FROM node:22.4.0-alpine3.19
-WORKDIR /app/bacckend-app
+WORKDIR /app/backend-app
 COPY package*.json ./
 RUN npm install
 COPY . .
