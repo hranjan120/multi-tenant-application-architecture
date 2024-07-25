@@ -6,14 +6,13 @@ import { setDataToRedis, getDataFromRedisByPattern, getDataFromRedis } from '../
 */
 export const addNewTenant = async (req, res, next) => {
     try {
-        const str = Math.random().toString(36).slice(-5).toLowerCase();
-        const randomStr = (+new Date).toString(36).slice(-5).toLowerCase()
+        const str = 'four';
         const data = {
-            tenantName: `Tenant ${randomStr}`,
-            tenantDomain: `tenant${randomStr}`,
+            tenantName: `Tenant four`,
+            tenantDomain: `tenant${str}`,
             tenantDb: `tenant-${str}-db`,
         }
-        await setDataToRedis(`tenant${randomStr}:tenantone-${str}-db`, JSON.stringify(data));
+        await setDataToRedis(`tenant${str}:tenant-${str}-db`, JSON.stringify(data));
         return res.status(200).json(successResponse('New Tenant Data Added Successfully'));
     } catch (error) {
         return next(error);
